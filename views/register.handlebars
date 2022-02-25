@@ -1,0 +1,139 @@
+{{> header }}
+<!-- >>>>>>>>>>>>>>>> Register <<<<<<<<<<<<<<<<<<<<<<<  -->
+
+<style>
+    .flash {
+        position: absolute;
+        right: 15px;
+        width: auto;
+        height: 46px;
+        background-color: black;
+        color: whitesmoke;
+        padding: 11px;
+        border-radius: 7px;
+        display: none;
+        box-shadow: 0px 0px 5px 4px #00000059;
+    }
+</style>
+
+<div class="flash">
+    <p id="msg" style=" float: left; margin: 6px 25px 0 0;"> </p>
+    <span style="float: right; margin: 6px 7px 0 0" onclick="this.parentElement.style.display='none'"> X </span>
+
+</div>
+
+<section id="login-form" class="flex-r container">
+    <div class="form-wrapper flex-r">
+        <form name="registration" action="/register" method="post" onsubmit="return checkData()">
+            <h1 class="form-head">Register</h1>
+            <p class="form-title">We are glad to see you here 😊</p>
+            <div class="input-box flex-r">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+            <div class="input-box flex-r">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+            <div class="input-box flex-r">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <input type="submit" name="submit" Value="Register" class="btn pink-btn" />
+            <a href="/login" class="form-line register-line">Already have an Account? Login</a>
+        </form>
+    </div>
+</section>
+
+<script>
+    
+
+    function checkData() {
+        return new Promise(function (resolve, reject) {
+
+            let username = document.forms['registration']['username'].value,
+                email = document.forms['registration']['email'].value,
+                password = document.forms['registration']['password'].value;
+
+            var flashBox = document.getElementsByClassName("flash")[0];
+
+            username = username.trim(), email = email.trim(), password = password.trim();
+
+            if (username != "" && email != "" && password != "") {
+
+                if (username.length <= 10 && username.length >= 3) {
+                    if (email.includes("@") && email.includes(".")) {
+                        if (password.length >= 4) {
+
+                            sendData(username, email).then(
+                                (value) => {
+                                    if (value == "True") {
+                                        console.log("Handle bar : Line 69 : " + value)
+                                        resolve(value);
+                                    } else {
+                                        flashBox.style.display = "block";
+                                        document.getElementById("msg").innerHTML = value;
+                                        resolve("false");
+                                    }
+
+                                },
+                                (error) => {
+                                    console.log(error);
+                                }
+                            );
+
+                        } else {
+                            flashBox.style.display = "block";
+                            document.getElementById("msg").innerHTML = "Password must be 4 and more characters";
+                            resolve("false");
+                        }
+                    } else {
+                        flashBox.style.display = "block";
+                        document.getElementById("msg").innerHTML = "Invalid Email";
+                        resolve("false");
+                    }
+
+                } else {
+                    flashBox.style.display = "block";
+                    document.getElementById("msg").innerHTML = "Username must be 3 and 10 characters";
+
+                    resolve("false");
+                }
+
+            } else {
+                document.getElementById("msg").innerHTML = "Please fill all the fields";
+                resolve("false");
+            }
+
+        });
+    }
+
+
+    function sendData(userName, eMail) {
+        return new Promise(function (resolve, reject) {
+
+            let xhttp = new XMLHttpRequest();
+
+            /*
+            // Define a callback function
+            xhttp.onload = function () {
+                console.log( "File is Loding up" )
+    
+            };
+            */
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    resolve(this.responseText);
+                }
+            };
+
+            // Send a request
+            xhttp.open("POST", "/register/chekSignup", true);
+            xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhttp.send("userName=" + userName + "&eMail=" + eMail);
+        });
+    }
+
+</script>
+{{> footer }}

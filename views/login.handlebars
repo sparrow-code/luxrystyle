@@ -1,0 +1,24 @@
+{{> header }}
+
+<!-- >>>>>>>>>>>>>>>> L O G I N <<<<<<<<<<<<<<<<<<<<<<<  -->
+<section id="login-form" class="flex-r container">
+    <div class="form-wrapper flex-r">
+        <form action="/login" method="POST" class="flex-c">
+            <h1 class="form-head">Login</h1>
+            <p class="form-title">Please login using account detail bellow</p>
+            <div class="input-box flex-r">
+                <i class="fas fa-envelope"></i>
+                <input type="text" name="email" placeholder="Email Address">
+            </div>
+            <div class="input-box flex-r">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <a href="/forget_password" class="form-line">Forgot your password?</a>
+            <input type="submit" name="submit" Value="Login" class="btn pink-btn" />
+            <a href="/register" class="form-line register-line">Don’t have an Account? Create account</a>
+        </form>
+    </div>
+</section>
+
+{{> footer }}

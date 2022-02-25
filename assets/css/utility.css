@@ -1,0 +1,102 @@
+/* >>>>>>>>>>> link font <<<<<<<<<<<<<<  */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Lato&display=swap');
+
+
+/* >>>>>>>>>>>> DEFAULT <<<<<<<<<< */
+*{margin: 0px; padding: 0px; box-sizing: border-box; font-family: 'Josefin Sans', sans-serif; }
+
+
+/* >>>>>>>>>>>>>> ROOTS <<<<<<<<<<<< */
+
+:root{
+    --white:#FFFFFF;
+    --voilet: #7E33E0;
+    --bg-fade: #EEEFFB;
+    --pink: #FB2E86;
+    --fade-border: #E7E6EF;
+    --p-text: #8A8FB9;
+    --main-bg: #F2F0FF;
+    --sec-head: #1A0B5B;
+    --card-bg: #F6F7FB;
+    --text: #151875;
+    --card-hover: #2F1AC4;
+    --black: #000000;
+}
+
+
+.container{
+    padding: 30px 70px;
+    margin: 0px auto;
+    width: 100%;
+}
+
+.flex-r{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.flex-c{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+input{
+    border: none;
+    outline: none;
+    height: 100%;
+    flex: 1;
+}
+
+.para{
+    font-family: 'Lato' , sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color:var(--p-text);
+    letter-spacing: 1px;
+}
+
+.btn{
+    border: none;
+    outline: none;
+    padding: 10px 14px; 
+    font-size: 17px;
+    cursor: pointer;
+}
+.pink-btn{
+    color: var(--white);
+    background-color: var(--pink);
+}
+.green-btn{
+    color: var(--white);
+    background-color: green;
+}
+.blue-btn{
+    color: var(--white);
+    background-color: var(--sec-head);
+}
+.price-crossed{
+    color: red;
+    text-decoration: line-through red;
+    margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
