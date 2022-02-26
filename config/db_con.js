@@ -3,14 +3,6 @@ var mysql = require('mysql');
 //import { promisify } from "util";
 
 var util = require('util');
-/*
-HOST : 
-User Name : cyberyug
-Password : Shivam@123
-PORT : 3306
-DB Name : cyberyug
-*/
-// DB Configuration
 
 var db_host = process.env.DB_HOST,
   db_user = process.env.DB_USER,
